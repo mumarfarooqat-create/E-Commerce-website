@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Gallery</title>
+    <style>
+        /* CSS class to highlight selected small image */
+        .selected {
+            border: 2px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Gallery</h1>
+
+    <!-- Large Image -->
+    <img id="largeImage" src="./shop/back.jpg" alt="Large Image">
+
+    <!-- Small Images at the bottom -->
+    <img class="small-image" src="./shop/new7.jpg" alt="Small Image 1" data-large="./photo/ban12.jpg" onclick="changeImage(this)">
+    <img class="small-image" src="./shop/pic (17).jpg" alt="Small Image 2" data-large="./photo/ban133.jpg" onclick="changeImage(this)">
+    <img class="small-image" src="./shop/pic (6).jpg" alt="Small Image 3" data-large="./photo/ban13.jpg" onclick="changeImage(this)">
+
+    <script>
+        function changeImage(clickedImage) {
+            // Get references to all small images
+            const smallImages = document.querySelectorAll('.small-image');
+            const largeImage = document.getElementById('largeImage');
+
+            // Remove the 'selected' class from all small images
+            smallImages.forEach(smallImage => {
+                smallImage.classList.remove('selected');
+            });
+
+            // Add the 'selected' class to the clicked small image
+            clickedImage.classList.add('selected');
+
+            // Set the large image source to the clicked small image's data-large attribute
+            largeImage.src = clickedImage.getAttribute('data-large');
+        }
+    </script>
+</body>
+</html>
